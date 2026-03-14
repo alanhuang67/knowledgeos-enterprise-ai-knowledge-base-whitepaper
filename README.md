@@ -1,93 +1,143 @@
-# 企业 AI 知识库构建白皮书
+# KnowledgeOS — Enterprise AI Knowledge Base Framework
 
-> 超越传统 RAG 的方法论与实践 | Enterprise AI Knowledge Base Whitepaper
+> **[中文版 README](./README_CN.md)**
 
-企业知识库搭建 · RAG 替代方案 · 大模型知识管理 · 中小企业 AI 知识库解决方案
+## From Knowledge Retrieval to Business Insight
 
-**Catlaxy AI · KnowledgeOS** | 2026 年 3 月
+KnowledgeOS is an enterprise knowledge management framework that **shifts AI comprehension from query-time to ingestion-time**. Instead of embedding raw text and hoping for relevant matches at query time, KnowledgeOS lets AI understand the meaning of each knowledge entry before it's stored — so retrieval is precise and insights are actionable.
 
----
+**Core principle:** Traditional RAG embeds raw text. KnowledgeOS embeds understanding. Retrieval accuracy is determined the moment knowledge is ingested, not when it's queried.
 
-## 📄 下载
-
-**[白皮书 PDF 下载](./Catlaxy_KnowledgeOS_Whitepaper_v1.pdf)**（20 页完整方法论）
+📄 **[Download the Full Whitepaper (PDF)](https://catlaxy.com.cn/download/Catlaxy_KnowledgeOS_20260313.pdf)** — 26 pages, real-world case study, five technical approaches compared.
 
 ---
 
-## 这份白皮书解决什么问题
+## The Problem
 
-企业部署 AI 知识库时，最常遇到的五个困境：
+Enterprises don't lack knowledge or data. They lack a system that makes knowledge **findable, usable, and decision-ready**.
 
-1. **传统 RAG 精度不够** — 切块匹配文字而非含义，复杂查询经常答非所问
-2. **知识图谱建不起** — GraphRAG 建设成本是普通方案的 3-5 倍
-3. **AI 自主检索用不起** — Agentic RAG 每次查询成本 5-8 倍
-4. **大窗口撑不住** — Long Context 超过一定规模后成本线性增长
-5. **知识库变僵尸** — 上线三个月没人更新，沦为摆设
+- **30%** of the workday is spent searching for internal information (IDC)
+- **79%** of enterprises lack unstructured data management capabilities (BCG)
+- **93%** have not achieved enterprise-wide AI deployment (McKinsey, 2025)
 
-如果你的企业正面临以上任何一个问题，这份白皮书提供了一条经过实测验证的中间路线。
+Current AI knowledge base solutions each have trade-offs: high build cost, high query cost, or no structured query capability. None simultaneously meet the needs of SMEs. And even when retrieval works, what enterprises really need is not a document fragment — it's a judgment: *Is this pricing reasonable? What went wrong with this campaign?* A knowledge base alone can't answer these questions because it doesn't have your business data.
 
-## 核心方法论
+---
 
-**KnowledgeOS** — 不是又一个 RAG 工具，是让知识先被理解、再被检索的构建框架。
+## How KnowledgeOS Works
 
-- **入库时理解，查询不猜测** — AI 在知识入库阶段完成语义理解，而非查询时临时匹配
-- **双轨处理** — 参数型数据走结构化精确查询，叙事型知识走语义向量检索
-- **业务自助更新** — 业务人员通过对话界面上传文档，AI 自动理解归类入库
-- **配置驱动扩展** — 换行业不改代码，同一套框架适配不同业务场景
+### Ingestion-Time Understanding
 
-## 实测验证
+Every knowledge entry is processed by AI at ingestion — generating semantic tags, applicable scenarios, and entity relationships. This front-loaded comprehension means queries hit structured metadata, not just vector similarity.
 
-| 指标 | 精品咖啡（知识密集型） | 电影数据库（数据密集型） |
-|------|---------|---------|
-| 数据规模 | 118 份多源文档（PDF + JSON） | 1,205 条记录 + 3,081 条类型关联 |
-| 表结构 | 5 张（品种·产地·冲煮·杯测·知识） | 3 张（影片·类型·关联表） |
-| 语义单元 | 729 条 summary chunks | 1,205 条双语 Embedding |
-| 向量维度 | 1024 维（中英双语） | 1024 维（中英双语） |
-| 查询模式 | 3 种（结构化 / 语义 / 混合） | 4 种（+ 实时外部 API） |
-| 输入方式 | 文本 | 文本 + 图片（海报识别·氛围匹配） |
-| 测试覆盖 | 33 条黄金测试集，通过率 100% | 7 类场景全覆盖 |
-| 框架复用 | 第二项目实测节省 68% 工作量 | — |
+### Dual-Channel Retrieval
 
-## 白皮书目录
+- **Structured queries** — precise filtering, quantitative answers with source traceability
+- **Semantic retrieval** — vector similarity + reranking, qualitative knowledge matching
 
-| 页码 | 内容 |
-|------|------|
-| 03 | 执行摘要 |
-| 04 | 第一章 · 企业知识管理的隐性成本 |
-| 07 | 第二章 · 现有 AI 方案为什么不够 |
-| 11 | 第三章 · 让 AI 在入库时就理解知识 |
-| 16 | 行业数据 |
-| 17 | 知识库健康度自检 |
-| 18 | 关于 Catlaxy AI |
-| 19 | 参考文献与数据来源 |
+### Cross-Source Insight Model
 
-## 数据来源
+The real differentiator: KnowledgeOS combines **three knowledge sources** to produce enterprise-specific insights:
 
-本白皮书引用的行业数据来自以下权威机构：
+```
+Industry Knowledge  ×  Brand Knowledge  ×  Business Data  =  Insight
+(public standards)     (your SOPs)         (your sales,       (your unique
+                                            inventory,          competitive
+                                            customers)          advantage)
+```
 
-- **麦肯锡**《The State of AI 2025》（2025.11，1,993 人，105 国）
-- **BCG**《The Widening AI Value Gap》（2025.9，1,250 家企业）
-- **IDC**《The High Cost of Not Finding Information》
-- **Stanford HAI**《AI Index Report 2025》
-- **NStarX**《The Next Frontier of RAG》（2025.12）
-- **Pryon / Unisphere Research**《Enterprise Information Discovery Survey 2024》
-- **《中国企业家人工智能应用调研报告（2025）》**（128 家企业）
+BI tells you *what happened*. A knowledge base tells you *what the standard is*. KnowledgeOS tells you **why it happened and what to do about it**.
 
-## 关键词
+---
 
-企业AI知识库、RAG替代方案、知识库搭建、企业知识管理、大模型知识库、AI知识库解决方案、中小企业AI、知识库白皮书、KnowledgeOS、Catlaxy AI、双轨处理、语义检索、结构化查询、knowledge base、enterprise RAG、AI knowledge management
+## Five Technical Approaches Compared
 
-## 联系
+The whitepaper evaluates five mainstream approaches to enterprise AI knowledge bases:
 
-- 🌐 官网：[catlaxy.com.cn](https://catlaxy.com.cn)
-- 📧 商业合作 / Demo 预约：alan@catlaxy.com.cn
+| Approach | Retrieval Accuracy | Build Cost | Query Cost | Business Data Integration |
+|----------|-------------------|------------|------------|--------------------------|
+| Basic RAG | Low | Low | Low | ✗ |
+| Knowledge Graph | High | Very High (3-5×) | Medium | ✗ |
+| Agentic RAG | Medium-High | High | High (5-8×) | ✗ |
+| Long Context | Medium | Low | Very High | ✗ |
+| **KnowledgeOS** | **High** | **Medium** | **Medium** | **✓** |
+
+All five mainstream approaches share a blind spot: none can combine knowledge with business data to produce actionable insights.
+
+---
+
+## Real-World Validation
+
+Tested with a specialty coffee chain (3 cities, 6 stores, 6 months of operational data):
+
+- **263K+** sales records, **1,500** customer profiles, **18.5K** inventory entries
+- **35** brand knowledge entries (SOPs, strategies, positioning)
+- **858** industry knowledge entries (coffee varieties, origins, brewing parameters)
+- **50 golden test cases** — **94% pass rate**
+
+### Example Insight Scenarios
+
+**Supply Chain Root Cause Analysis**
+> User: "What's the stockout situation for Geisha in Beijing over the past 6 months?"
+>
+> KnowledgeOS identifies 22-32 days of stockout across two stores, retrieves the brand's seasonal launch strategy, and determines the root cause: replenishment mechanism failure — reorder quantity equals safety threshold, leaving zero buffer.
+
+**Assumption Correction**
+> User: "Geisha isn't selling well in Beijing — is the price too high?"
+>
+> KnowledgeOS cross-references pricing (identical across all cities), sales data (Beijing hand-pour is 40% of Shanghai, but retail beans are 84%), and brand positioning (Beijing is a validation market with structurally smaller target segment). Conclusion: pricing isn't the issue — the problem is customer segment penetration and scenario conversion.
+
+---
+
+## Who Is This For?
+
+- SMEs that need AI knowledge management but can't afford knowledge graph infrastructure
+- Teams where business users (not just engineers) need to maintain and query the knowledge base
+- Organizations that need knowledge retrieval **combined with business data analysis** — not just document search
+- Enterprises already hitting accuracy or insight ceilings with current RAG-based solutions
+
+---
+
+## Repository Contents
+
+```
+├── whitepaper/
+│   ├── Catlaxy_KnowledgeOS_20260313.pdf    # Full whitepaper (Chinese)
+│   └── Catlaxy_AI_KnowledgeOS_EN.pdf          # English version (coming soon)
+├── README.md                                    # This file
+├── README_CN.md                                 # Chinese version
+└── LICENSE                                      # CC BY-NC-ND 4.0
+```
+
+---
+
+## About Catlaxy AI
+
+**Catlaxy AI (乐晞科技)** is a Shanghai-based enterprise AI consultancy founded by Alan Huang, with 25 years of digital transformation experience spanning IT/data platforms, advertising (WPP/BBDO), and management consulting (PwC).
+
+We build premium AI agent systems and knowledge infrastructure for enterprise clients. KnowledgeOS is our core product framework — purpose-built for organizations that need their AI to understand their knowledge, not just search it.
+
+- 🌐 **Website:** [catlaxy.com.cn](https://catlaxy.com.cn)
+- 📄 **Whitepaper:** [Download PDF](https://catlaxy.com.cn/download/Catlaxy_KnowledgeOS_20260313.pdf)
+- 💼 **LinkedIn:** [Alan Huang](https://www.linkedin.com/in/alanhuang67/)
+
+---
 
 ## License
 
-本白皮书采用 [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) 许可协议。
+This work is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
 
-允许阅读和分享，禁止修改和商用。
+You may share this material with attribution. Commercial use and derivative works require written permission from Catlaxy AI.
 
 ---
 
-© 2026 乐晞科技（上海）有限公司 · Catlaxy AI
+## Citation
+
+If you reference this work in academic or professional contexts:
+
+```
+Huang, A. (2026). From Knowledge Retrieval to Business Insight:
+AI-Native Enterprise Knowledge Management Framework.
+Catlaxy AI · KnowledgeOS Whitepaper. March 2026.
+https://github.com/alanhuang67/knowledgeos-enterprise-ai-knowledge-base-whitepaper
+```
