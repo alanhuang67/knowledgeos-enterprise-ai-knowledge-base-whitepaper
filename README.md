@@ -136,7 +136,7 @@ You may share this material with attribution. Commercial use and derivative work
 If you reference this work in academic or professional contexts:
 
 ```
-Huang, A. (2026). From Knowledge Retrieval to Business Insight:
+Alan.Huang. (2026). From Knowledge Retrieval to Business Insight:
 AI-Native Enterprise Knowledge Management Framework.
 Catlaxy AI · KnowledgeOS Whitepaper. March 2026.
 https://github.com/alanhuang67/knowledgeos-enterprise-ai-knowledge-base-whitepaper
